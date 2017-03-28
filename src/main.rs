@@ -1,3 +1,4 @@
+#![allow(unused_parens)]
 mod models;
 mod file_helper;
 
@@ -18,6 +19,7 @@ extern crate zip;
 extern crate rustc_serialize;
 extern crate handlebars;
 #[macro_use] extern crate text_io;
+
 
 fn main() {
     let args : Vec<String> = env::args().collect();
