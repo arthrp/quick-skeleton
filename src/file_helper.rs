@@ -10,7 +10,7 @@ use std::path::Component::ParentDir;
 pub fn write_file(file: &mut ZipFile, outpath: &Path, data: &BTreeMap<String,String>){
     let mut file_contents = String::new();
 
-    let content = file.read_to_string(&mut file_contents).unwrap();
+    file.read_to_string(&mut file_contents).unwrap();
     let mut outfile = fs::File::create(&outpath).unwrap();
 
     let mut handlebars = Handlebars::new();

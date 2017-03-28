@@ -5,13 +5,9 @@ mod file_helper;
 use std::env;
 use std::path::Path;
 use std::fs::File;
-use std::fs;
 use std::io::prelude::*;
-use zip::read::ZipFile;
-use rustc_serialize::json::{Json};
 use rustc_serialize::json;
 use std::collections::BTreeMap;
-use handlebars::Handlebars;
 use models::TemplateParameter;
 use file_helper::*;
 
@@ -35,11 +31,11 @@ fn main() {
     let mut archive = zip::ZipArchive::new(zip_file).unwrap();
     let params_json : Vec<TemplateParameter> = json::decode(&get_param_json(&mut archive)).unwrap();
 
-    let mut data : BTreeMap<String,String> = fill_data(&params_json);
-    extract_content(&mut archive, data);
+    let data : BTreeMap<String,String> = fill_data(&params_json);
+    extract_content(&mut archive, &data);
 }
 
-fn extract_content<R: Read + std::io::Seek>(archive: &mut zip::ZipArchive<R>, mut data: BTreeMap<String,String>){
+fn extract_content<R: Read + std::io::Seek>(archive: &mut zip::ZipArchive<R>, data: &BTreeMap<String,String>){
     for i in 0..archive.len(){
         let mut archive_file = archive.by_index(i).unwrap();
 
@@ -77,7 +73,7 @@ fn get_param_json<R: Read + Seek>(archive: &mut zip::ZipArchive<R>) -> String
 
 fn fill_data(params_json: &Vec<TemplateParameter>) -> BTreeMap<String,String>{
     let mut data = BTreeMap::new();
-    let mut input = String::new();
+    let mut input: String;
 
     for i in 0..params_json.len(){
         println!("{}:", params_json[i].desc);
