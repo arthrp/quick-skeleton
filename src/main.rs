@@ -81,6 +81,10 @@ fn fill_data(params_json: &Vec<TemplateParameter>) -> BTreeMap<String,String>{
         &data.insert(format!("{}", params_json[i].name), format!("{}", input));
     }
 
+    println!("Input project folder name:");
+    input = read!("{}\n");
+    &data.insert("folder_name", format!("{}", input));
+
     return data;
 }
 
