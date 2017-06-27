@@ -35,7 +35,7 @@ fn main() {
     extract_content(&mut archive, &data);
 }
 
-fn extract_content<R: Read + std::io::Seek>(archive: &mut zip::ZipArchive<R>, data: &BTreeMap<String,String>){
+fn extract_content<R: Read + std::io::Seek>(archive: &mut zip::ZipArchive<R>, data: &BTreeMap<String,String>) -> () {
     for i in 0..archive.len(){
         let mut archive_file = archive.by_index(i).unwrap();
 
@@ -55,8 +55,7 @@ fn extract_content<R: Read + std::io::Seek>(archive: &mut zip::ZipArchive<R>, da
     }
 }
 
-fn get_param_json<R: Read + Seek>(archive: &mut zip::ZipArchive<R>) -> String
-{
+fn get_param_json<R: Read + Seek>(archive: &mut zip::ZipArchive<R>) -> String {
     let mut param_file = match archive.by_name("parameters.json"){
         Ok(file) => file,
         Err(..) => {
@@ -71,7 +70,7 @@ fn get_param_json<R: Read + Seek>(archive: &mut zip::ZipArchive<R>) -> String
     return param_file_contents;
 }
 
-fn fill_data(params_json: &Vec<TemplateParameter>) -> BTreeMap<String,String>{
+fn fill_data(params_json: &Vec<TemplateParameter>) -> BTreeMap<String,String> {
     let mut data = BTreeMap::new();
     let mut input: String;
 
@@ -83,7 +82,7 @@ fn fill_data(params_json: &Vec<TemplateParameter>) -> BTreeMap<String,String>{
 
     println!("Input project folder name:");
     input = read!("{}\n");
-    &data.insert("folder_name", format!("{}", input));
+    &data.insert("folder_name".to_string(), format!("{}", input));
 
     return data;
 }

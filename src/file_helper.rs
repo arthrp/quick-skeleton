@@ -7,7 +7,7 @@ use handlebars::Handlebars;
 use std::path::PathBuf;
 use std::path::Component::ParentDir;
 
-pub fn write_file(file: &mut ZipFile, outpath: &Path, data: &BTreeMap<String,String>){
+pub fn write_file(file: &mut ZipFile, outpath: &Path, data: &BTreeMap<String,String>) {
     let mut file_contents = String::new();
 
     file.read_to_string(&mut file_contents).unwrap();
@@ -20,7 +20,7 @@ pub fn write_file(file: &mut ZipFile, outpath: &Path, data: &BTreeMap<String,Str
     outfile.write_all(&res.as_bytes());
 }
 
-pub fn create_directory(outpath: &Path) -> (){
+pub fn create_directory(outpath: &Path) -> () {
     fs::create_dir_all(&outpath).unwrap();
 }
 
