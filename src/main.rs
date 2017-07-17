@@ -10,6 +10,7 @@ use rustc_serialize::json;
 use std::collections::BTreeMap;
 use models::TemplateParameter;
 use file_helper::*;
+use std::io::Seek;
 
 extern crate zip;
 extern crate rustc_serialize;
@@ -19,7 +20,7 @@ extern crate handlebars;
 
 fn main() {
     let args : Vec<String> = env::args().collect();
-
+	
     if (env::args().count() < 3){
         println!("Wrong arguments supplied.");
         print_usage(&args[0]);
@@ -35,7 +36,7 @@ fn main() {
     extract_content(&mut archive, &data);
 }
 
-fn extract_content<R: Read + std::io::Seek>(archive: &mut zip::ZipArchive<R>, data: &BTreeMap<String,String>) -> () {
+fn extract_content<R: Read + Seek>(archive: &mut zip::ZipArchive<R>, data: &BTreeMap<String,String>) -> () {
     for i in 0..archive.len(){
         let mut archive_file = archive.by_index(i).unwrap();
 
