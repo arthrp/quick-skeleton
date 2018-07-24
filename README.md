@@ -1,6 +1,6 @@
 # quick-skeleton
 
-[![Build Status](https://travis-ci.org/arthrp/quick-template.svg?branch=master)](https://travis-ci.org/arthrp/quick-template)
+[![Build Status](https://travis-ci.org/arthrp/quick-skeleton.svg?branch=master)](https://travis-ci.org/arthrp/quick-skeleton)
 
 **tldr;** Lightweight replacement for [yeoman](http://yeoman.io/) or [slush](http://slushjs.github.io). Powered by Handlebars.
 
