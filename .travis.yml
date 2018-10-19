@@ -5,3 +5,9 @@ os:
 - linux
 script:
 - cargo test --all-features
+
+deploy:
+  provider: releases
+  api_key: "5b0f11f13e4915dab770cfd926ea2cdcdb5ba67a"
+  file: "quick-skeleton"
+  skip_cleanup: true
