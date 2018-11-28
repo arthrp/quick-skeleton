@@ -22,3 +22,4 @@ All the other files in archive will be extracted and expressions inside them wil
 ### Usage
 
 ```quick-skeleton -c [path to template]``` You can use simple_page.zip in project's root to create, well, simple web page. ```quick-skeleton -c simple_page.zip```
+```quick-skeleton -n [forder path] -file [default project folder name]``` - create template from folder. Creates template without variables.
