@@ -1,4 +1,6 @@
 #![allow(unused_parens)]
+#![allow(unused_must_use)]
+
 mod models;
 mod file_helper;
 
@@ -44,9 +46,8 @@ fn main() {
         let dir_to_zip = &args[2];
         let folder_name = &args[4];
         let file_name = format!("{}.zip", folder_name);
-        let folder_path = Path::new(dir_to_zip);
-        let zipFileName = Path::new(&file_name);
-        let file = File::create(zipFileName).unwrap();
+        let zip_file_name = Path::new(&file_name);
+        let file = File::create(zip_file_name).unwrap();
 
         let walkdir = WalkDir::new(dir_to_zip);
         let walkdirIt = walkdir.into_iter();
