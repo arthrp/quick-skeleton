@@ -19,6 +19,10 @@ Template is essentially a zip archive that must contain a file called **paramete
 ```
 All the other files in archive will be extracted and expressions inside them will be processed by Handlebars engine.
 
+### Installation
+
+Preferred method is to check out the source and run ```cargo install``` at the moment.
+
 ### Usage
 
 ```quick-skeleton -c [path to template]``` You can use simple_page.zip in project's root to create, well, simple web page. ```quick-skeleton -c simple_page.zip```
