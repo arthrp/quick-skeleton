@@ -1,16 +1,33 @@
+# Language flags.
 language: rust
-rust:
-- stable
-os:
-- linux
-script:
-- cargo build --release
 
+# OS matrix.
+os:
+  - linux
+  - osx
+  - windows
+
+# Version matrix.
+rust:
+  - stable
+  - beta
+  - nightly
+
+# Cargo caching.
+cache:
+  cargo: true
+
+# Build scripting.
+script:
+  - cargo build --release
+
+# Release deployment.
 deploy:
   provider: releases
   api_key:
-    secure: "BIjuXKcOPcLif1AUMBTsIwzoLXqMuuLz3M45uOPiisZkPLL/9wLX+WckWrmPU1I70uuazAWKf1EfQEtkEJ+m/mIMYXTqmoHJK/3btebQohi2iI6NH7vLtkSyBeYYUBFA2zsWjSP+v6Ye3mAfsWZ8j0K+eTk+9HpGbHuxY5ThMdq1lZOaHl6yKdta4m0q1N+NZXSoSl6daYUjQuhBKpTCV/IsCM6gfjJ6qaXFrdSrdlx3el8+DLxnYxc8BDOBMPvM3Xg+1RKfgUeaPCTP3qIU8/UJzAhJS+RKv7oybHAlwAYE/vcd/D5ETrKhyeonPhWbwsZ8PFkYiVKEZAiacMrtC89YNdgchpCTc+zYKQdmtxXP2e4KnadnulRx32dhV/+47lf98FuGrgGJaA5FP/EtiODpGfF8zYDopQyyce763LxEycA294DUOCuh+1SCGziScAjIBf5N2sJIyd3fP+r6FG2rUnmtjiaOfYuc5/Mqa/tSEXF7vukR5JOf3NXha2oS0hApaSCzfvVrqx2od9QHgZ/7Gb0aDagoV3tARhtkC/j7EoqhRe6IVlOV9LWVXHusKnx4HPiYoFAVYq9l3nqkjI+LR256MLOAWxonH8vh2Ei3lNdeE1YcVXmvoku3rCmIFRBGpba7VDjoqD87rVR1WUWapz+nKjTgvOq/HGmgN5A="
-  file: "target/release/quick-skeleton"
+    secure: BIjuXKcOPcLif1AUMBTsIwzoLXqMuuLz3M45uOPiisZkPLL/9wLX+WckWrmPU1I70uuazAWKf1EfQEtkEJ+m/mIMYXTqmoHJK/3btebQohi2iI6NH7vLtkSyBeYYUBFA2zsWjSP+v6Ye3mAfsWZ8j0K+eTk+9HpGbHuxY5ThMdq1lZOaHl6yKdta4m0q1N+NZXSoSl6daYUjQuhBKpTCV/IsCM6gfjJ6qaXFrdSrdlx3el8+DLxnYxc8BDOBMPvM3Xg+1RKfgUeaPCTP3qIU8/UJzAhJS+RKv7oybHAlwAYE/vcd/D5ETrKhyeonPhWbwsZ8PFkYiVKEZAiacMrtC89YNdgchpCTc+zYKQdmtxXP2e4KnadnulRx32dhV/+47lf98FuGrgGJaA5FP/EtiODpGfF8zYDopQyyce763LxEycA294DUOCuh+1SCGziScAjIBf5N2sJIyd3fP+r6FG2rUnmtjiaOfYuc5/Mqa/tSEXF7vukR5JOf3NXha2oS0hApaSCzfvVrqx2od9QHgZ/7Gb0aDagoV3tARhtkC/j7EoqhRe6IVlOV9LWVXHusKnx4HPiYoFAVYq9l3nqkjI+LR256MLOAWxonH8vh2Ei3lNdeE1YcVXmvoku3rCmIFRBGpba7VDjoqD87rVR1WUWapz+nKjTgvOq/HGmgN5A=
+  file: target/release/quick-skeleton
   skip_cleanup: true
   on:
+    os: linux
     tags: true
