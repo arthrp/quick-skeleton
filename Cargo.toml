@@ -2,6 +2,7 @@
 name = "quickskeleton"
 version = "0.4.7"
 authors = ["arthrp"]
+edition = "2018"
 
 [dependencies]
 handlebars = "0.25.0"

@@ -2,5 +2,5 @@
 pub struct TemplateParameter {
     pub name: String,
     pub value: String,
-    pub desc: String
+    pub desc: String,
 }
