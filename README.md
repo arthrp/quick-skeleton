@@ -29,3 +29,5 @@ Preferred method is to check out the source and run ```cargo install``` at the m
 
 
 ```quick-skeleton -n [forder path] -file [default project folder name]``` - create template from folder. Creates template without variables.
+
+There is a [repo](https://github.com/arthrp/quick-skeleton-templates) with various templates.
