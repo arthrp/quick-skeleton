@@ -18,6 +18,7 @@ Template is essentially a zip archive that must contain a file called **paramete
 ]
 ```
 Example from *simple_page* template:
+```
 {
 	"name" : "title",
 	"value": "My sample title",
