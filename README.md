@@ -18,12 +18,11 @@ Template is essentially a zip archive that must contain a file called **paramete
 ]
 ```
 Example from *simple_page* template:
-```
-	{
+{
 	"name" : "title",
 	"value": "My sample title",
 	"desc": "Input title"
-	}
+}
 ```
 All the other files in archive will be extracted and expressions inside them will be processed by Handlebars engine.
 
