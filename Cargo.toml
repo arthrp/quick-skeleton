@@ -2,6 +2,11 @@
 name = "quickskeleton"
 version = "0.4.7"
 authors = ["arthrp"]
+license = "GPL-3.0-only"
+description = "Simple tool for scaffolding"
+homepage = "https://github.com/arthrp/quick-skeleton"
+repository = "https://github.com/arthrp/quick-skeleton"
+readme = "README.md"
 
 [dependencies]
 handlebars = "0.25.0"
