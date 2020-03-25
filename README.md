@@ -29,7 +29,8 @@ All the other files in archive will be extracted and expressions inside them wil
 
 ### Installation
 
-Preferred method is to check out the source and run ```cargo install``` at the moment.
+You can install it from crates.io by invoking ```cargo install quickskeleton```.
+Or you can check out the code and run ```cargo install```.
 
 ### Usage
 
