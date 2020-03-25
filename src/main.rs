@@ -35,9 +35,9 @@ fn main() {
 
     if(mode == "-c") {
         let file_path = Path::new(&args[2]);
-        let zip_file = File::open(&file_path).unwrap();
+        let zip_file = File::open(&file_path).expect("Cannot open template file at specified path!");
         let mut archive = zip::ZipArchive::new(zip_file).unwrap();
-        let params_json : Vec<TemplateParameter> = json::decode(&get_param_json(&mut archive)).unwrap();
+        let params_json : Vec<TemplateParameter> = json::decode(&get_param_json(&mut archive)).expect("Error decoding JSON into model");
 
         let data : BTreeMap<String,String> = fill_data(&params_json);
         extract_content(&mut archive, &data);
@@ -47,19 +47,19 @@ fn main() {
         let folder_name = &args[4];
         let file_name = format!("{}.zip", folder_name);
         let zip_file_name = Path::new(&file_name);
-        let file = File::create(zip_file_name).unwrap();
+        let file = File::create(zip_file_name).expect("Cannot create a template file");
 
         let walkdir = WalkDir::new(dir_to_zip);
-        let walkdirIt = walkdir.into_iter();
+        let walkdir_it = walkdir.into_iter();
 
-        zip_dir(&mut walkdirIt.filter_map(|e| e.ok()), dir_to_zip, file, folder_name);
+        zip_dir(&mut walkdir_it.filter_map(|e| e.ok()), dir_to_zip, file, folder_name);
     }
     else { 
         print_usage(&args[0]);
     }
 }
 
-fn zip_dir<T>(walkdirIt: &mut Iterator<Item=DirEntry>, prefix: &str, writer: T, folder_name: &str)
+fn zip_dir<T>(walkdir_it: &mut Iterator<Item=DirEntry>, prefix: &str, writer: T, folder_name: &str)
               -> zip::result::ZipResult<()>
     where T: Write+Seek
 {
@@ -75,7 +75,7 @@ fn zip_dir<T>(walkdirIt: &mut Iterator<Item=DirEntry>, prefix: &str, writer: T, 
 
     zip.add_directory(format!("{}/", folder_name), FileOptions::default());
 
-    for entry in walkdirIt {
+    for entry in walkdir_it {
         let path = entry.path();
         let name = path.strip_prefix(Path::new(prefix)).unwrap().to_str().unwrap();
 
