@@ -1,6 +1,7 @@
 # quick-skeleton
 
 [![Build Status](https://travis-ci.org/arthrp/quick-skeleton.svg?branch=master)](https://travis-ci.org/arthrp/quick-skeleton)
+[![Crates.io status](https://img.shields.io/badge/crates.io-v0.4.7-orange.svg?longCache=true)](https://crates.io/crates/quickskeleton)
 
 **tldr;** Lightweight replacement for [yeoman](http://yeoman.io/) or [slush](http://slushjs.github.io). Powered by [handlebars](https://github.com/wycats/handlebars.js).
 
