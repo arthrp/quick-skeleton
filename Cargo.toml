@@ -1,6 +1,6 @@
 [package]
 name = "quickskeleton"
-version = "0.4.7"
+version = "0.4.8"
 authors = ["arthrp"]
 license = "GPL-3.0-only"
 description = "Simple tool for scaffolding"
