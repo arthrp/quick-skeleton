@@ -116,8 +116,9 @@ fn extract_content<R: Read + Seek>(archive: &mut zip::ZipArchive<R>, data: &BTre
 fn get_param_json<R: Read + Seek>(archive: &mut zip::ZipArchive<R>) -> String {
     let mut param_file = match archive.by_name("parameters.json"){
         Ok(file) => file,
-        Err(..) => {
+        Err(x) => {
             println!("File is not a valid template");
+            println!("Error: {}", x);
             std::process::exit(2);
         }
     };
