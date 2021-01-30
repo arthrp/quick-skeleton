@@ -59,7 +59,7 @@ fn main() {
     }
 }
 
-fn zip_dir<T>(walkdir_it: &mut Iterator<Item=DirEntry>, prefix: &str, writer: T, folder_name: &str)
+fn zip_dir<T>(walkdir_it: &mut dyn Iterator<Item=DirEntry>, prefix: &str, writer: T, folder_name: &str)
               -> zip::result::ZipResult<()>
     where T: Write+Seek
 {
